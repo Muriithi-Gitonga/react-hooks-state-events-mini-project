@@ -29,6 +29,10 @@ function App() {
     setTask([...tasks, newTask])
   }
 
+  function handleCategory (newCat) {
+    setCat([...categories, newCat])
+  }
+
   return (
     <div className="App">
       <h2>My tasks</h2>
@@ -40,7 +44,7 @@ function App() {
         tasks={tasks}
         
       />
-      <NewTaskForm category={categories.filter((newCategory) => newCategory !== 'All')} handleTask={handleTask} />
+      <NewTaskForm category={categories.filter((newCategory) => newCategory !== 'All')} handleTask={handleTask} handleCategory={handleCategory}/>
       <TaskList tasks={tasks}   handleDelete={handleDelete} />
     </div>
   );

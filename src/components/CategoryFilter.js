@@ -1,5 +1,5 @@
 import React from "react";
-import { TASKS } from "../data";
+import { CATEGORIES, TASKS } from "../data";
 
 function CategoryFilter({category, selectedCategory, setSelectedCategory, tasks, taskData}) {
   function handleCategory (category) {
@@ -24,7 +24,7 @@ function CategoryFilter({category, selectedCategory, setSelectedCategory, tasks,
     <div className="categories">
       <h5>Category filters </h5>
       {
-        category.map((cat) => {
+        CATEGORIES.map((cat) => {
           const className = cat===selectedCategory ? 'selected' : null
           return (
             <button className={className} onClick={() => handleCategory(cat)} key={cat}>{cat}</button>

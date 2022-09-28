@@ -1,8 +1,6 @@
 import React from "react";
 
 function Task({ text, category, handleDelete }) {
-
-  
   return (
     <div className="task">
       <div className="label">{category}</div>

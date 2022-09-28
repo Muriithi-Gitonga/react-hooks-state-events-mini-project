@@ -1,10 +1,10 @@
 import React from "react";
 import Task from "./Task";
 
-function TaskList({ taskData, handleDelete }) {
+function TaskList({ handleDelete, tasks }) {
   return (
     <div className="tasks">
-      {taskData.map((task) => (
+      {tasks.map((task) => (
         <Task
           key={task.text}
           text={task.text}

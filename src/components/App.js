@@ -10,16 +10,19 @@ console.log({ CATEGORIES, TASKS });
 
 function App() {
   const [tasks, setTask] = useState(TASKS);
-  const [onecategory, setCategory] = useState("All");
+  const [categories, setCat] = useState(CATEGORIES)
+  const [selectedCategories, setSelectedCategory] = useState("");
   
-  const filteredTasks = tasks.filter(
-    (task) => onecategory ===  "All" || task.category === onecategory
-  );
+  
+  function filteredTasks (tasks) {
+    setTask(tasks)
+  }
+
 
   function handleDelete(text) {
     const updatedTask = tasks.filter((task) => text !== task.text);
     
-    setTask(updatedTask)
+    setTask((tasks) => updatedTask)
   console.log(tasks);
 }
   function handleTask (newTask) {
@@ -31,11 +34,14 @@ function App() {
       <h2>My tasks</h2>
       <CategoryFilter
         category={CATEGORIES}
-        selectedCategory={onecategory}
-        handleCategory={setCategory}
+        selectedCategory={selectedCategories}
+        setSelectedCategory={setSelectedCategory}
+        taskData={filteredTasks}
+        tasks={tasks}
+        
       />
-      <NewTaskForm category={CATEGORIES.filter((newCategory) => newCategory !== 'All')} handleTask={handleTask}/>
-      <TaskList taskData={filteredTasks} handleDelete={handleDelete} />
+      <NewTaskForm category={categories.filter((newCategory) => newCategory !== 'All')} handleTask={handleTask} />
+      <TaskList tasks={tasks}   handleDelete={handleDelete} />
     </div>
   );
 }
